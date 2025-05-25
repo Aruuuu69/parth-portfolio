@@ -1,46 +1,83 @@
-
+/* Reset and base styles */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000;
     color: #fff;
+    line-height: 1.6;
 }
+
+/* Hero section */
 .hero {
     background: linear-gradient(135deg, #000, #8B0000);
     color: #fff;
     text-align: center;
     padding: 80px 20px;
 }
+
 .hero span {
     color: #FF0000;
 }
+
+.hero h1 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+/* Buttons */
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background: #FF0000;
+    background-color: #FF0000;
     color: #fff;
     text-decoration: none;
     margin-top: 20px;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
+
+.btn:hover {
+    background-color: #cc0000;
+}
+
+/* Main sections */
 section {
     padding: 40px 20px;
     max-width: 800px;
-    margin: auto;
+    margin: 0 auto;
 }
+
+/* Lists */
 ul {
     list-style-type: square;
+    padding-left: 20px;
 }
+
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #111;
+    background-color: #111;
+    font-size: 14px;
+    color: #aaa;
 }
+
+/* Responsive */
 @media (max-width: 600px) {
     .hero h1 {
         font-size: 24px;
     }
     .hero p {
         font-size: 16px;
+    }
+    section {
+        padding: 20px 15px;
     }
 }
