@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Parth Saini | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  
+  <!-- AOS Animate On Scroll CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
-    /* Reset & base */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    /* Reset and basic styles */
     body {
-      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #121212;
       color: #eee;
       line-height: 1.6;
@@ -19,240 +20,268 @@
     a {
       color: #e63946;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a:hover {
-      text-decoration: underline;
+      color: #f1a1a8;
     }
 
-    /* Container */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* Header & nav */
     header {
       background: #1f1f1f;
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
-    nav {
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
     }
-    nav .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
       color: #e63946;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li {
+    nav a {
+      margin-left: 1.5rem;
       font-weight: 600;
     }
-    nav ul li a {
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover {
-      color: #f1faee;
+    nav a:hover {
+      color: #f1a1a8;
     }
 
-    /* Sections */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
     section {
-      padding: 100px 20px 60px; /* top padding accounts for fixed nav */
+      margin-bottom: 4rem;
     }
     h2 {
-      color: #e63946;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #e63946;
-      display: inline-block;
-      padding-bottom: 5px;
+      font-size: 2rem;
+      border-bottom: 3px solid #e63946;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
     }
 
-    /* About */
-    #about p {
-      font-size: 1.1rem;
-      max-width: 700px;
+    /* Buttons */
+    .btn {
+      background: #e63946;
+      color: #fff;
+      padding: 0.6rem 1.3rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(230, 57, 70, 0.7);
+    }
+
+    /* Project cards */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: #1f1f1f;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 15px rgba(230, 57, 70, 0.7);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #e63946;
+    }
+    .project-card p {
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
     /* Skills */
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .skill-item {
-      background: #2a2a2a;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      color: #f1faee;
-      box-shadow: 0 2px 5px rgba(230,57,70,0.6);
-      transition: transform 0.3s ease;
-      cursor: default;
-    }
-    .skill-item:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 10px rgba(230,57,70,0.8);
-    }
-
-    /* Projects */
-    .project-card {
-      background: #1f1f1f;
-      padding: 20px;
-      border-radius: 10px;
+    .skill-bar {
       margin-bottom: 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
     }
-    .project-card h3 {
-      margin-bottom: 10px;
-    }
-    .project-card p {
-      margin-bottom: 15px;
-      color: #ccc;
-    }
-    .project-card a {
-      font-weight: 700;
-      color: #e63946;
-    }
-    .project-card a:hover {
-      color: #f1faee;
-    }
-
-    /* Certifications & Education */
-    ul.cert-list {
-      list-style: disc inside;
-      max-width: 700px;
-      color: #ccc;
-    }
-    ul.cert-list li {
-      margin-bottom: 8px;
-    }
-
-    /* Contact */
-    #contact p, #contact a {
-      font-size: 1.1rem;
-      color: #f1faee;
-    }
-    .social-links a {
-      margin-right: 15px;
+    .skill-bar span {
       font-weight: 600;
-      color: #e63946;
-      transition: color 0.3s ease;
+      margin-bottom: 6px;
+      display: block;
+      font-size: 1rem;
     }
-    .social-links a:hover {
-      color: #f1faee;
+    .bar {
+      background: #2a2a2a;
+      border-radius: 20px;
+      height: 22px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.7);
+    }
+    .progress {
+      background: #e63946;
+      height: 100%;
+      width: 0;
+      border-radius: 20px;
+      animation: fillBar 2s forwards;
+    }
+    /* Animate fill */
+    @keyframes fillBar {
+      to {
+        width: var(--progress);
+      }
     }
 
-    /* Responsive */
-    @media(max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-      section {
-        padding: 120px 10px 40px;
-      }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 26px;
+      cursor: pointer;
+      display: none;
+      z-index: 1001;
+      box-shadow: 0 3px 6px rgba(230, 57, 70, 0.6);
+      transition: background 0.3s ease;
     }
+    #backToTop:hover {
+      background: #d62828;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #1f1f1f;
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
   </style>
 </head>
 <body>
 
-<header>
-  <nav>
-    <div class="logo">Parth Saini</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1>Parth Saini</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<div class="container">
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am Parth Saini, a passionate Data Science student at Echelon Institute of Technology. I love building smart, AI-driven applications and exploring the power of data.
-    </p>
-  </section>
+  <main>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills-list">
-      <div class="skill-item">Python</div>
-      <div class="skill-item">Machine Learning</div>
-      <div class="skill-item">Data Analysis</div>
-      <div class="skill-item">Deep Learning</div>
-      <div class="skill-item">Cybersecurity</div>
-      <div class="skill-item">Excel Advanced</div>
-      <div class="skill-item">SQL</div>
-      <div class="skill-item">Git & GitHub</div>
-    </div>
-  </section>
+    <section id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <p>
+        Hello! I’m Parth Saini, a passionate Data Science student and aspiring software developer.  
+        I love creating efficient, beautiful web projects and learning new technologies.
+      </p>
+      <p>
+        Currently pursuing B.Tech in Computer Science with specialization in Data Science.
+      </p>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+    <section id="skills" data-aos="fade-left">
+      <h2>Skills</h2>
+      <div class="skill-bar">
+        <span>Python</span>
+        <div class="bar">
+          <div class="progress" style="--progress: 85%;"></div>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <span>Data Analysis</span>
+        <div class="bar">
+          <div class="progress" style="--progress: 75%;"></div>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <span>Machine Learning</span>
+        <div class="bar">
+          <div class="progress" style="--progress: 70%;"></div>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <span>Web Development (HTML, CSS, JS)</span>
+        <div class="bar">
+          <div class="progress" style="--progress: 80%;"></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-card">
-      <h3>Resume Screening AI</h3>
-      <p>An AI-based tool to automate resume shortlisting using NLP and ML techniques.</p>
-      <a href="https://github.com/Aruuuu69/Resume-Screening-AI" target="_blank">View Repository</a>
-    </div>
+    <section id="projects" data-aos="fade-up">
+      <h2>Projects</h2>
+      <div class="projects-container">
+        <div class="project-card">
+          <h3>Resume Screening AI</h3>
+          <p>Automated resume screening system using NLP and machine learning to rank candidates efficiently.</p>
+          <a class="btn" href="https://github.com/Aruuuu69/ResumeScreeningAI" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+        <div class="project-card">
+          <h3>Face Recognition Attendance System</h3>
+          <p>Real-time attendance marking using KNN face recognition with OpenCV and Python.</p>
+          <a class="btn" href="https://github.com/Aruuuu69/FaceRecognitionAttendanceSystem" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+        <div class="project-card">
+          <h3>AI Virtual Teaching Assistant</h3>
+          <p>An NLP-based assistant fetching answers from lecture notes for students’ questions.</p>
+          <a class="btn" href="https://github.com/Aruuuu69/AI-Teaching-Assistant" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-card">
-      <h3>Face Recognition Attendance System</h3>
-      <p>A real-time attendance marking system using face recognition with OpenCV and KNN model.</p>
-      <a href="https://github.com/Aruuuu69/Face-Recognition-Attendance" target="_blank">View Repository</a>
-    </div>
+    <section id="contact" data-aos="fade-left">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:sainiparth155@gmail.com">sainiparth155@gmail.com</a></p>
+      <p>Phone: <a href="tel:+918595620624">+91 85956 20624</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/parth-saini-0664b4" target="_blank" rel="noopener">parth-saini-0664b4</a></p>
+      <p>GitHub: <a href="https://github.com/Aruuuu69" target="_blank" rel="noopener">Aruuuu69</a></p>
+    </section>
 
-  </section>
+  </main>
 
-  <section id="certifications">
-    <h2>Certifications & Education</h2>
-    <ul class="cert-list">
-      <li>B.Tech in Computer Science (Data Science) - Echelon Institute of Technology (2023-2027)</li>
-      <li>Basic to Advanced Cybersecurity - Pregrade</li>
-      <li>Soft Skills - NPTEL</li>
-      <li>Advanced Excel</li>
-    </ul>
-  </section>
+  <button id="backToTop" title="Back to Top">↑</button>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:sainiparth155@gmail.com">sainiparth155@gmail.com</a></p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/parth-saini-0664b4" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Aruuuu69" target="_blank">GitHub</a>
-    </div>
-  </section>
-</div>
+  <footer>
+    &copy; 2025 Parth Saini. All rights reserved.
+  </footer>
 
-<script>
-  // Smooth scroll for nav links
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  <!-- AOS Animate On Scroll JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
     });
-  });
-</script>
 
+    // Back to Top button
+    const backToTop = document.getElementById('backToTop');
+    window.onscroll = () => {
+      backToTop.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    };
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
-
