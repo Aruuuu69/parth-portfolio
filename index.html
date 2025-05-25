@@ -1,63 +1,258 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parth Saini | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parth Saini | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #eee;
+      line-height: 1.6;
+    }
+    a {
+      color: #e63946;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header & nav */
+    header {
+      background: #1f1f1f;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #e63946;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li {
+      font-weight: 600;
+    }
+    nav ul li a {
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #f1faee;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 20px 60px; /* top padding accounts for fixed nav */
+    }
+    h2 {
+      color: #e63946;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e63946;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    /* About */
+    #about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    /* Skills */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .skill-item {
+      background: #2a2a2a;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      color: #f1faee;
+      box-shadow: 0 2px 5px rgba(230,57,70,0.6);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .skill-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(230,57,70,0.8);
+    }
+
+    /* Projects */
+    .project-card {
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+    }
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+    .project-card a {
+      font-weight: 700;
+      color: #e63946;
+    }
+    .project-card a:hover {
+      color: #f1faee;
+    }
+
+    /* Certifications & Education */
+    ul.cert-list {
+      list-style: disc inside;
+      max-width: 700px;
+      color: #ccc;
+    }
+    ul.cert-list li {
+      margin-bottom: 8px;
+    }
+
+    /* Contact */
+    #contact p, #contact a {
+      font-size: 1.1rem;
+      color: #f1faee;
+    }
+    .social-links a {
+      margin-right: 15px;
+      font-weight: 600;
+      color: #e63946;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #f1faee;
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      section {
+        padding: 120px 10px 40px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="container">
-            <h1>Hi, I'm <span>Parth Saini</span></h1>
-            <p>Aspiring Data Scientist | ML & AI Enthusiast</p>
-            <a href="assets/Parth_Saini_Resume.pdf" class="btn" download>Download Resume</a>
-        </div>
-    </header>
 
-    <section class="about">
-        <h2>About Me</h2>
-        <p>I’m currently pursuing a B.Tech in CSE (Data Science) from Echelon Institute of Technology under YMCA. I have a strong foundation in AI, Machine Learning, and software development. Passionate about solving real-world problems using data-driven solutions.</p>
-    </section>
+<header>
+  <nav>
+    <div class="logo">Parth Saini</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Python, C/C++</li>
-            <li>OpenCV, NumPy, Pandas, Scikit-learn</li>
-            <li>Machine Learning, Deep Learning</li>
-            <li>Advanced Excel</li>
-        </ul>
-    </section>
+<div class="container">
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am Parth Saini, a passionate Data Science student at Echelon Institute of Technology. I love building smart, AI-driven applications and exploring the power of data.
+    </p>
+  </section>
 
-    <section class="projects">
-        <h2>Projects</h2>
-        <h3>Resume Screening AI</h3>
-        <p>Built an NLP-based AI system that filters resumes based on job requirements.</p>
-        <h3>Face Recognition Attendance System</h3>
-        <p>Developed a real-time face recognition system using OpenCV and KNN.</p>
-    </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-list">
+      <div class="skill-item">Python</div>
+      <div class="skill-item">Machine Learning</div>
+      <div class="skill-item">Data Analysis</div>
+      <div class="skill-item">Deep Learning</div>
+      <div class="skill-item">Cybersecurity</div>
+      <div class="skill-item">Excel Advanced</div>
+      <div class="skill-item">SQL</div>
+      <div class="skill-item">Git & GitHub</div>
+    </div>
+  </section>
 
-    <section class="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li>Cyber Security: Basic to Advanced - Pregrade</li>
-            <li>Soft Skills - NPTEL</li>
-            <li>Advanced Excel</li>
-        </ul>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
 
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:sainiparth155@gmail.com">sainiparth155@gmail.com</a></p>
-        <p>Phone: 8595620624</p>
-        <p>GitHub: <a href="https://github.com/Aruuuu69" target="_blank">Aruuuu69</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/parth-saini-0664b4" target="_blank">parth-saini</a></p>
-    </section>
+    <div class="project-card">
+      <h3>Resume Screening AI</h3>
+      <p>An AI-based tool to automate resume shortlisting using NLP and ML techniques.</p>
+      <a href="https://github.com/Aruuuu69/Resume-Screening-AI" target="_blank">View Repository</a>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Parth Saini. All Rights Reserved.</p>
-    </footer>
+    <div class="project-card">
+      <h3>Face Recognition Attendance System</h3>
+      <p>A real-time attendance marking system using face recognition with OpenCV and KNN model.</p>
+      <a href="https://github.com/Aruuuu69/Face-Recognition-Attendance" target="_blank">View Repository</a>
+    </div>
+
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications & Education</h2>
+    <ul class="cert-list">
+      <li>B.Tech in Computer Science (Data Science) - Echelon Institute of Technology (2023-2027)</li>
+      <li>Basic to Advanced Cybersecurity - Pregrade</li>
+      <li>Soft Skills - NPTEL</li>
+      <li>Advanced Excel</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:sainiparth155@gmail.com">sainiparth155@gmail.com</a></p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/parth-saini-0664b4" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Aruuuu69" target="_blank">GitHub</a>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Smooth scroll for nav links
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
 </body>
 </html>
+
